@@ -20,7 +20,7 @@ exports.signup = (req, res, next) => {
 exports.login = (req, res, next) => {
     User.findOne({email: req.body.email})
         .then(user => {
-            if (user=== null) {
+            if (user === null) {
                 res.status(401).json({message: 'Paire identifiant/mot de passe incorrecte'});
             } else {
                 bcrypt.compare(req.body.password, user.password)
@@ -33,7 +33,7 @@ exports.login = (req, res, next) => {
                                 token: jwt.sign(
                                     {userId: user._id},
                                     'RANDOM_TOKEN_SECRET',
-                                    {expiresIn: "24h"}
+                                    {expiresIn: '24h'}
                                 )
                             });
                         }
