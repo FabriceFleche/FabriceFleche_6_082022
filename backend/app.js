@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const sauceRoutes = require('./routes/sauce');
 const userRoutes = require('./routes/user');
 
-
+// Configuration de la base de données mongoDB
 mongoose.connect('mongodb+srv://Fabrice:Devopen71@cluster0.jggjy8z.mongodb.net/?retryWrites=true&w=majority',
   { 
     useNewUrlParser: true,
@@ -15,8 +15,10 @@ mongoose.connect('mongodb+srv://Fabrice:Devopen71@cluster0.jggjy8z.mongodb.net/?
 .then(() => console.log('Connexion à MongoDB réussie !'))
 .catch(() => console.log('Connexion à MongoDB échouée !'));
 
+// Accès au core de la requête
 app.use(express.json());
 
+// Ajout des Middlewares d'autorisations
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
