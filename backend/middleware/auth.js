@@ -1,3 +1,4 @@
+// Gestion de l'authentification avec un token
 const jwt = require('jsonwebtoken');
 
 module.exports = (req, res, next) => {

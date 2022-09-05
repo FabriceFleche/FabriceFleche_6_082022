@@ -108,6 +108,7 @@ exports.sauceLike = (req, res, next) => {
           })
           .then(() => res.status(201).json({ message: "Vous n'aimez pas cette sauce !" }))
           .catch((error) => {res.status(400).json({ error })});
+      // L utilisateur annule son dislike    
       } else if (sauce.usersDisliked.includes(req.body.userId)) {
         Sauce.updateOne({ _id: req.params.id  },
           {
